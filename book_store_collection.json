@@ -1,14 +1,14 @@
 {
 	"info": {
 		"_postman_id": "9c045a10-bab6-421a-9dc6-9cff9755c548",
-		"name": "Store Books",
-		"description": "An api to manage a store books.\n\nStack\n\n- Node.js\n    \n- MongoDB (Atlas)",
+		"name": "Books Store API 📚",
+		"description": "A simple RESTful API to manage books and authors, built with Node.js. It supports basic CRUD operations and allows searching books by publisher.\n\n## ✨ Features\n\n- Manage books and authors with full CRUD operations\n    \n- Filter books by publisher\n    \n- RESTful and well-structured endpoints\n    \n- Easy to set up and run",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "4144026"
 	},
 	"item": [
 		{
-			"name": "Books",
+			"name": "books",
 			"item": [
 				{
 					"name": "List books",
@@ -22,16 +22,72 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}books",
+							"raw": "{{api}}{{version}}books",
 							"host": [
-								"{{baseDomain}}{{versionApi}}books"
+								"{{api}}{{version}}books"
 							]
-						}
+						},
+						"description": "This endpoint makes an HTTP GET request to retrieve a list of books. The response of this request is documented below as a JSON schema:\n\n``` json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"books\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"title\": {\n            \"type\": \"string\"\n          },\n          \"author\": {\n            \"type\": \"string\"\n          },\n          \"genre\": {\n            \"type\": \"string\"\n          },\n          \"publishedDate\": {\n            \"type\": \"string\",\n            \"format\": \"date\"\n          }\n        },\n        \"required\": [\"title\", \"author\", \"genre\", \"publishedDate\"]\n      }\n    }\n  }\n}\n\n ```"
 					},
-					"response": []
+					"response": [
+						{
+							"name": "List books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api}}{{version}}books",
+									"host": [
+										"{{api}}{{version}}books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1214"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4be-0sjjpRSDRZ2JOiQ2TDmGPx2yuZQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 06 Jan 2025 23:48:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"66d9bc24850c85afa9585162\",\n        \"title\": \"Matrix\",\n        \"price\": 10,\n        \"pages\": 100,\n        \"publisher\": \"Warner\"\n    },\n    {\n        \"_id\": \"670db6d71d81995166f0e3ec\",\n        \"title\": \"Deron\",\n        \"publisher\": \"Graham\",\n        \"price\": 174.16,\n        \"pages\": 378,\n        \"author\": {\n            \"name\": \"Kay Goyette\",\n            \"country\": \"Malaysia\",\n            \"_id\": \"66fdd2eb79177bed4e1ed1f7\"\n        }\n    },\n    {\n        \"_id\": \"670db71a1d81995166f0e3f0\",\n        \"title\": \"Sim\",\n        \"publisher\": \"Schuppe\",\n        \"price\": 223.51,\n        \"pages\": 683,\n        \"author\": {\n            \"name\": \"Kay Goyette\",\n            \"country\": \"Malaysia\",\n            \"_id\": \"66fdd2eb79177bed4e1ed1f7\"\n        }\n    },\n    {\n        \"_id\": \"670db71b1d81995166f0e3f4\",\n        \"title\": \"Louisa\",\n        \"publisher\": \"Donnelly\",\n        \"price\": 938.95,\n        \"pages\": 215,\n        \"author\": {\n            \"name\": \"Kay Goyette\",\n            \"country\": \"Malaysia\",\n            \"_id\": \"66fdd2eb79177bed4e1ed1f7\"\n        }\n    },\n    {\n        \"_id\": \"670db71c1d81995166f0e3f8\",\n        \"title\": \"Judson\",\n        \"publisher\": \"Denesik\",\n        \"price\": 416.54,\n        \"pages\": 201,\n        \"author\": {\n            \"name\": \"Kay Goyette\",\n            \"country\": \"Malaysia\",\n            \"_id\": \"66fdd2eb79177bed4e1ed1f7\"\n        }\n    },\n    {\n        \"_id\": \"670db71d1d81995166f0e3fc\",\n        \"title\": \"Phyllis\",\n        \"publisher\": \"Hammes\",\n        \"price\": 29.82,\n        \"pages\": 234,\n        \"author\": {\n            \"name\": \"Kay Goyette\",\n            \"country\": \"Malaysia\",\n            \"_id\": \"66fdd2eb79177bed4e1ed1f7\"\n        }\n    },\n    {\n        \"_id\": \"670db7da1c8c84565b34f09f\",\n        \"title\": \"Claud\",\n        \"publisher\": \"Cummings\",\n        \"price\": 671.85,\n        \"pages\": 499,\n        \"author\": {\n            \"name\": \"Kay Goyette\",\n            \"country\": \"Malaysia\",\n            \"_id\": \"66fdd2eb79177bed4e1ed1f7\"\n        }\n    }\n]"
+						}
+					]
 				},
 				{
-					"name": "Search publisher",
+					"name": "search a publisher",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -42,9 +98,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}books/search?publisher=Warner",
+							"raw": "{{api}}{{version}}books/search?publisher=Warner",
 							"host": [
-								"{{baseDomain}}{{versionApi}}books"
+								"{{api}}{{version}}books"
 							],
 							"path": [
 								"search"
@@ -55,12 +111,13 @@
 									"value": "Warner"
 								}
 							]
-						}
+						},
+						"description": "\n### Get Books by Publisher\n\nThis endpoint retrieves a list of books based on the publisher's name.\n\n#### Request\n\n- Method: GET\n- Endpoint: `{{baseDomain}}{{versionApi}}books/search`\n- Query Parameters:\n  - `publisher` (string, required): The name of the publisher for which books are to be searched.\n\n#### Response\n\nThe response for this request is a JSON object with the following properties:\n- `books` (array): An array of book objects matching the search criteria.\n  - `title` (string): The title of the book.\n  - `author` (string): The author of the book.\n  - `isbn` (string): The ISBN of the book.\n  - `publishedDate` (string): The published date of the book.\n  - `publisher` (string): The name of the publisher of the book.\n\n#### JSON Schema\n\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"books\": {\n      \"type\": \"array\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"title\": { \"type\": \"string\" },\n          \"author\": { \"type\": \"string\" },\n          \"isbn\": { \"type\": \"string\" },\n          \"publishedDate\": { \"type\": \"string\" },\n          \"publisher\": { \"type\": \"string\" }\n        }\n      }\n    }\n  }\n}\n```\n"
 					},
 					"response": []
 				},
 				{
-					"name": "List just one book by id",
+					"name": "find a specific book",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -71,19 +128,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}books/66d9bc24850c85afa9585162",
+							"raw": "{{api}}{{version}}books/66d9bc24850c85afa9585162",
 							"host": [
-								"{{baseDomain}}{{versionApi}}books"
+								"{{api}}{{version}}books"
 							],
 							"path": [
 								"66d9bc24850c85afa9585162"
 							]
-						}
+						},
+						"description": "\n### Request\n\nThis endpoint makes an HTTP GET request to retrieve the details of a specific book identified by the provided ID.\n\n#### Request Body\nThe request does not include a request body.\n\nThe endpoint URL should be constructed as follows:\n```\n{{baseDomain}}{{versionApi}}books/66d9bc24850c85afa9585162\n```\n\n### Response\n\nUpon a successful request, the endpoint returns the details of the specified book in the response body. The response will include the following details:\n- `title`: The title of the book.\n- `author`: The author of the book.\n- `publication_date`: The publication date of the book.\n- `genre`: The genre of the book.\n- Any other relevant information related to the specified book.\n"
 					},
 					"response": []
 				},
 				{
-					"name": "Create a new book",
+					"name": "create a new book",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -97,11 +155,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}books",
+							"raw": "{{api}}{{version}}books",
 							"host": [
-								"{{baseDomain}}{{versionApi}}books"
+								"{{api}}{{version}}books"
 							]
-						}
+						},
+						"description": "\nThis endpoint makes an HTTP POST request to create a new book in the system. The request should include a JSON payload in the raw request body type with the following parameters:\n- \"title\": (string) The title of the book.\n- \"publisher\": (string) The name of the publisher.\n- \"price\": (number) The price of the book.\n\n### Request Body\n- title (string): The title of the book.\n- publisher (string): The name of the publisher.\n- price (number): The price of the book.\n\n#### Response\nThe response will include a message and details of the newly created book, including:\n- \"message\": A status message.\n- \"book\": An object containing the details of the newly created book, including:\n  - \"title\": The title of the book.\n  - \"publisher\": The name of the publisher.\n  - \"price\": The price of the book.\n  - \"pages\": The number of pages in the book.\n  - \"author\": An object containing the details of the author, including:\n    - \"name\": The name of the author.\n    - \"country\": The country of the author.\n    - \"_id\": The unique identifier of the author.\n  - \"_id\": The unique identifier of the book.\n\n"
 					},
 					"response": [
 						{
@@ -164,7 +223,7 @@
 					]
 				},
 				{
-					"name": "Updated a book",
+					"name": "updated a book",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -184,33 +243,35 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}books/670db7da1c8c84565b34f09f",
+							"raw": "{{api}}{{version}}books/670db7da1c8c84565b34f09f",
 							"host": [
-								"{{baseDomain}}{{versionApi}}books"
+								"{{api}}{{version}}books"
 							],
 							"path": [
 								"670db7da1c8c84565b34f09f"
 							]
-						}
+						},
+						"description": "# Update Book Details\n\nThis API endpoint is used to update the details of a specific book.\n\n## Request\n\n### Request URL\n\n- `PUT` {{baseDomain}}{{versionApi}}books/670db7da1c8c84565b34f09f\n    \n\n### Request Body\n\n- The request body should be in JSON format and include the following parameters:\n    \n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| title | String | The title of the book. |\n| publisher | String | The name of the publisher of the book. |\n| price | Number | The price of the book. |\n\nExample:\n\n``` json\n{\n  \"title\": \"Sample Title\",\n  \"publisher\": \"Sample Publisher\",\n  \"price\": 25.99\n}\n## Response\nThe response for this request will be a JSON object conforming to the following schema:\n```json\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"status\": {\n      \"type\": \"string\"\n    },\n    \"message\": {\n      \"type\": \"string\"\n    }\n  }\n}\n\n ```"
 					},
 					"response": []
 				}
 			]
 		},
 		{
-			"name": "Authors",
+			"name": "authors",
 			"item": [
 				{
-					"name": "Get all authors",
+					"name": "get all authors",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}authors",
+							"raw": "{{api}}{{version}}authors",
 							"host": [
-								"{{baseDomain}}{{versionApi}}authors"
+								"{{api}}{{version}}authors"
 							]
-						}
+						},
+						"description": "# Get Authors\n\nThis endpoint retrieves a list of authors.\n\n### Request\n\n- Method: GET\n    \n- URL: `{{baseDomain}}{{versionApi}}authors`\n    \n\n### Response\n\nThe response will contain an array of author objects, where each author object includes the following fields:\n\n- `_id` (string): The unique identifier of the author.\n    \n- `name` (string): The name of the author.\n    \n- `country` (string): The country of the author.\n    \n\nExample response body:\n\n``` json\n[\n    {\n        \"_id\": \"\",\n        \"name\": \"\",\n        \"country\": \"\"\n    }\n]\n\n ```"
 					},
 					"response": [
 						{
@@ -264,14 +325,14 @@
 					]
 				},
 				{
-					"name": "Get by id",
+					"name": "retrive a specific author",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}authors/66fdd2eb79177bed4e1ed1f7",
+							"raw": "{{api}}{{version}}authors/66fdd2eb79177bed4e1ed1f7",
 							"host": [
-								"{{baseDomain}}{{versionApi}}authors"
+								"{{api}}{{version}}authors"
 							],
 							"path": [
 								"66fdd2eb79177bed4e1ed1f7"
@@ -333,7 +394,7 @@
 					]
 				},
 				{
-					"name": "Create a new author",
+					"name": "create a new author",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -353,9 +414,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}authors",
+							"raw": "{{api}}{{version}}authors",
 							"host": [
-								"{{baseDomain}}{{versionApi}}authors"
+								"{{api}}{{version}}authors"
 							]
 						}
 					},
@@ -426,7 +487,7 @@
 					]
 				},
 				{
-					"name": "Update a author",
+					"name": "update a author",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -446,9 +507,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}authors/670db022184d70f23a577832",
+							"raw": "{{api}}{{version}}authors/670db022184d70f23a577832",
 							"host": [
-								"{{baseDomain}}{{versionApi}}authors"
+								"{{api}}{{version}}authors"
 							],
 							"path": [
 								"670db022184d70f23a577832"
@@ -525,7 +586,7 @@
 					]
 				},
 				{
-					"name": "Delete a author",
+					"name": "delete a author",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -536,9 +597,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseDomain}}{{versionApi}}authors/670db022184d70f23a577832",
+							"raw": "{{api}}{{version}}authors/670db022184d70f23a577832",
 							"host": [
-								"{{baseDomain}}{{versionApi}}authors"
+								"{{api}}{{version}}authors"
 							],
 							"path": [
 								"670db022184d70f23a577832"
@@ -632,12 +693,12 @@
 	],
 	"variable": [
 		{
-			"key": "baseDomain",
+			"key": "api",
 			"value": "http://localhost:3000/api/",
 			"type": "string"
 		},
 		{
-			"key": "versionApi",
+			"key": "version",
 			"value": "v1/",
 			"type": "string"
 		}
