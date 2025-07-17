@@ -1,22 +1,17 @@
+import js from "@eslint/js";
 import globals from "globals";
-import pluginJs from "@eslint/js";
+import {defineConfig} from "eslint/config";
 
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
+export default defineConfig([
     {
-        "env": {
-            "browser": true,
-            "es2021": true,
-            "node": true
-        },
-        rules: {
-            semi: "error",
-            "prefer-const": "error"
-        },
-        languageOptions: {
-            globals: globals.browser
-        }
+        files: ["**/*.{js,mjs,cjs}"],
+        plugins: {js},
+        extends: ["js/recommended"],
+        languageOptions: {ecmaVersion: "latest"},
     },
-    pluginJs.configs.recommended,
-];
+    {
+        files: ["**/*.{js,mjs,cjs}"],
+        languageOptions: {globals: globals.browser},
+    },
+]);
