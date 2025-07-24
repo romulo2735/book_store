@@ -7,19 +7,19 @@ const bookSchema = new mongoose.Schema({
     },
     title: {
         type: String,
-        required: true
+        required: [true, "Title is required"],
     },
     publisher: {
         type: String,
-        required: true
+        required: [true, "Publisher is required"],
     },
     price: {
         type: Number,
-        required: true
+        required: [true, "Price is required"],
     },
     pages: {
         type: Number,
-        required: true
+        required: [true, "Pages is required"],
     },
     author: authorSchema
 
