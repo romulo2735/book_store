@@ -2,6 +2,7 @@ import express from "express";
 import conn from "./config/connect.js";
 
 import routes from "./routes/index.js";
+import handlerErrors from "./middleware/handlerErrors.js";
 
 const connect = await conn()
 
@@ -15,6 +16,9 @@ connect.once("open", () => {
 
 const app = express();
 routes(app);
+
+// eslint-disable-next-line no-unused-vars
+app.use(handlerErrors);
 
 // Using inMemory database //
 /**

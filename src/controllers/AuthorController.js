@@ -1,7 +1,7 @@
 import {Author} from "../models/Author.js";
 
 export default class AuthorController {
-    static async getAuthors(req, res) {
+    static async getAuthors(req, res, next) {
         try {
             const authors = await Author.find({});
 
@@ -11,11 +11,11 @@ export default class AuthorController {
 
             res.status(200).json(authors);
         } catch (error) {
-            res.status(500).json({message: error.message})
+            next(error);
         }
     }
 
-    static async getAuthorById(req, res) {
+    static async getAuthorById(req, res, next) {
         try {
             const id = req.params.id;
             const author = await Author.findById(id);
@@ -26,32 +26,29 @@ export default class AuthorController {
 
             res.status(200).send(author);
         } catch (error) {
-            res.status(500).send({
-                error: error.message,
-                message: "Internal Server Error"
-            })
+            next(error);
         }
     }
 
-    static async createAuthor(req, res) {
+    static async createAuthor(req, res, next) {
         try {
             const author = await Author.create(req.body);
             res.status(201).json({message: "Author: ", author});
         } catch (error) {
-            res.status(500).json({message: error.message})
+            next(error);
         }
     }
 
-    static async updateAuthor(req, res) {
+    static async updateAuthor(req, res, next) {
         try {
             const author = await Author.findByIdAndUpdate(req.params.id, req.body);
             res.json(author);
         } catch (error) {
-            res.status(500).json({message: error.message})
+            next(error);
         }
     }
 
-    static async deleteAuthor(req, res) {
+    static async deleteAuthor(req, res, next) {
         try {
             const author = await Author.findByIdAndDelete(req.params.id);
 
@@ -60,7 +57,7 @@ export default class AuthorController {
             }
             res.json(author);
         } catch (error) {
-            res.status(500).json({message: error.message})
+            next(error);
         }
     }
 }
